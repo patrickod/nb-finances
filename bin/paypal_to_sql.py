@@ -20,7 +20,10 @@ def format_row(row):
 def float_to_cents(c):
   c = c.replace(',', '')
 
-  value = float(c[1:]) if '-' in c else float(c)
+  if c[0] == '-':
+    value = -float(c[1:])
+  else:
+    value = float(c)
 
   cents = value * 100
   return int(cents)
